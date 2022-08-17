@@ -8,7 +8,7 @@ using namespace std;
 int main() {
 	srand(time(NULL));
 	const string wall = "@", floor = "-", player = "o", coin = "*";
-	int h = (rand() % 14) + 8, w = (rand() % 12) + 8, allc = 0, c = 0;
+	int h = (rand() % 14) + 8, w = (rand() % 12) + 8, allc = 0, c = 0, floornumber = 1;
 	vector<vector<string>> a(h, vector<string>(w));
 	
 	for (int i = 0; i < h; i++) {
@@ -29,7 +29,13 @@ int main() {
 		
 	}
 	int ph = h / 2, pw = w / 2;
-	a[ph][pw] = player;
+	if (a[ph][pw] == coin) {
+		a[ph][pw] = player;
+		allc--;
+	}
+	else {
+		a[ph][pw] = player;
+	}
 	
 
 	for (int i = 0; i < h; i++) { //первый вывод
@@ -39,6 +45,7 @@ int main() {
 		cout << endl;
 	}
 	cout << c << "/" << allc << endl;
+	cout << "Floor: " << floornumber << endl;
 
 	while (1) {
 		int g = _getch();
@@ -95,6 +102,7 @@ int main() {
 			cout << endl;
 		}
 		cout << c << "/" << allc << endl;
+		cout << "Floor: " << floornumber << endl;
 
 		if (c == allc) {
 			cout << "Floor passed! Press Enter to continue or Esc to exit the game." << endl;
@@ -104,6 +112,7 @@ int main() {
 					exit(0);
 				}
 				else if (gg == 13) { //новая конмата
+					floornumber++;
 					a.clear();
 					h = (rand() % 14) + 8, w = (rand() % 12) + 8, allc = 0, c = 0;
 					a.assign(h, vector<string>(w));
@@ -126,7 +135,13 @@ int main() {
 
 					}
 					ph = h / 2, pw = w / 2;
-					a[ph][pw] = player;
+					if (a[ph][pw] == coin) {
+						a[ph][pw] = player;
+						allc--;
+					}
+					else {
+						a[ph][pw] = player;
+					}
 
 					system("cls");
 					for (int i = 0; i < h; i++) { 
@@ -136,6 +151,7 @@ int main() {
 						cout << endl;
 					}
 					cout << c << "/" << allc << endl;
+					cout << "Floor: " << floornumber << endl;
 
 				}
 				break;
