@@ -7,7 +7,7 @@ using namespace std;
 int main()
 {
 	setlocale(LC_ALL, "Russian");
-	string path = "C:\\Users\\menia\\Desktop\\myFile.txt";
+	string path = "myFile.txt";
 	ifstream fin;
 	ofstream fout;
 	string log, str;
